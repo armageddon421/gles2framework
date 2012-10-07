@@ -5,7 +5,7 @@
 # rpi_noX	- get keyboard events from raw input, xwindows not needed
 
 PLATFORM=xorg
-#PLATFORM=rpi
+PLATFORM=rpi
 #PLATFORM=rpi_noX
 
 ####
@@ -59,6 +59,12 @@ sprites: $(OBJ) o/sprites.o lib/libkazmath.a
 	gcc $^ -o sprites $(LIBS)
 
 o/sprites.o: examples/sprites.c
+	gcc $(FLAGS) $< -o $@
+
+test: $(OBJ) o/test.o lib/libkazmath.a
+	gcc $^ -o test $(LIBS)
+
+o/test.o: examples/test.c
 	gcc $(FLAGS) $< -o $@
 
 chiptest: $(OBJ) o/chiptest.o lib/libkazmath.a
